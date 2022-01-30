@@ -17,7 +17,7 @@ body {
 </style>
 </head>
 <body>
-	<div data-role="header" align="center" style="margin-top: 100px;">
+	<div data-role="header" align="center">
 		<img src="img/lambton.png" width="200px" height="200px">
 	</div>
 	<div data-role="content">
@@ -27,14 +27,20 @@ body {
 				* Navdeep Kaur * Samridhi <br> * Abhinav Mittal * Aarti <br>
 				* Ahmed
 			</p>
-			<h2>* Your Marks detail *</h2>
-			Average score: <input type="text" name="m1">
+			<h2>*${studentName}: Your Marks detail *</h2>
+			Average score: ${average}
 			<br>
 			<br>
-			Mimimum Score : <input type="text" name="m2">
+			Minimum Score: ${minScore}
 			<br>
 			<br>
-			Maximum Score: <input type="text" name="m3">
+			Maximum Score: ${maxScore}
+			<br>
+			<br>
+			Grade: ${grade}
+			<br>
+			<br>
+			Grade Point: ${gradePoint}
 		</form>
 	</div>
 </body>
