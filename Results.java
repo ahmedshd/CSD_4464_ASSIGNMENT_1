@@ -35,6 +35,11 @@ public class Results extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	/** Date -28/01/22
+	*Author - Samridhi
+	*method to gather marks from final.jsp
+	*computing marks and forwarding the results to results.jsp
+	*/ 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String marks1=request.getParameter("m1");
@@ -61,9 +66,13 @@ public class Results extends HttpServlet {
 		 
 		request.setAttribute("Name",n);
 		request.setAttribute("average", avg);
+		/**
+		
+		*to redirect page to results.jsp using redirect
+		*/
 		request.getRequestDispatcher("Webpage.jsp").forward(request, response);
 		 String redirectURL = "Webpage.jsp";
-	     response.sendRedirect(redirectURL);
+	     	response.sendRedirect(redirectURL);
 	     
 		
 		 // add code for minimum,maximum and grade scheme
