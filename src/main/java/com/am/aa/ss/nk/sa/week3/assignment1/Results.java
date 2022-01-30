@@ -1,4 +1,4 @@
-package com.ss.assignment1;
+package com.am.aa.ss.nk.sa.week3.assignment1;
 
 import java.io.IOException;
 import java.io.PrintWriter;
