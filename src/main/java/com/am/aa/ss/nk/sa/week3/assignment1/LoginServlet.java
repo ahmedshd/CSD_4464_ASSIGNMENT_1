@@ -10,8 +10,11 @@ package com.am.aa.ss.nk.sa.week3.assignment1;
  */
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,15 +45,27 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		HttpSession session = request.getSession(false);
-		if(email == null || password == null || email.strip().equals("") || password.strip().equals("")) {
+		HttpSession session = request.getSession(true);
+		session.setAttribute("isLoggedIn", false);
+		if(username == null || password == null || username.isBlank() || password.isBlank()) {
 			//save message in session
 			session.setAttribute("message", "<p style=\"color:red;\">Please enter all the values.</p>");
 			response.sendRedirect("Login.jsp");
-		} else if("admin".equalsIgnoreCase(email) && "admin".equals(password)) {
+		} else if("admin".equalsIgnoreCase(username) && "admin".equals(password)) {
 			
+			// Adding a cookie with the username info
+			Cookie userNameCookie = new Cookie("loggedInUser", username);
+			userNameCookie.setMaxAge(30*60);
+			response.addCookie(userNameCookie);
+			
+			// Adding username and logIn status in session
+			session.setAttribute("isLoggedIn", true);
+			session.setAttribute("loggedInUser", username);
+			
+			RequestDispatcher rd= request.getRequestDispatcher("StudentDetails");
+			rd.forward(request,response);
 		} else {
 			session.setAttribute("message", "<p style=\"color:red;\">Email or Password is wrong!</p>");
 			response.sendRedirect("Login.jsp");

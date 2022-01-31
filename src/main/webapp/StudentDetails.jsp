@@ -26,29 +26,31 @@ body {
 		<br>
 		<br>
 	</div>
-	<div data-role="content" style="border: 2px solid black; width: 480px; margin-left: 35%;">
-		<form action="Results" method="post" style="text-align: center;">
+	<div data-role="content" style="border: 2px solid black; width: 480px; margin-left: 35%;text-align: center;">
+		<form action="Results" method="post">
 			<br>
-			<label for="user-name">Student Name:</label>&nbsp;
-			<input type="text" name="studentname">&nbsp;
-			<h2>Enter your marks in 5 subjects</h2>&nbsp;
-			Mobile Technology : <input type="text" name="m1">
-			<br>
-			<br> 
-			Python Program : <input type="text" name="m2">
+			<label for="user-name">Student Name:</label>
+			<input type="text" name="studentname" required>
+			<h2>Enter your marks in 5 subjects</h2>
+			Mobile Technology : <input type="number" name="m1" required>
 			<br>
 			<br> 
-			WebTec Program: <input type="text" name="m3">
+			Python Program : <input type="number" name="m2" required>
 			<br>
 			<br> 
-			Web Technology : <input type="text" name="m4">
+			WebTec Program: <input type="number" name="m3" required>
 			<br>
 			<br> 
-			Data Management: <input type="text" name="m5">
+			Web Technology : <input type="number" name="m4" required>
+			<br>
+			<br> 
+			Data Management: <input type="number" name="m5" required>
 			<br>
 			<br>
 			<input type="submit" value ="Submit Details"/>
 		</form>
+		<br>
+		<a href="<%=request.getContextPath() %>/logout" style="color: floralwhite !Important;">Logout</a>
 	</div>
 </body>
 </html>
